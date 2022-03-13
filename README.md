@@ -1,4 +1,4 @@
-# Project 1: TODO LIST (REST API's)
+# Project: TODO LIST (REST API's)
 
 ## User Story:
 
@@ -14,6 +14,7 @@
 
         * [x] Setup basic go project
         * [x] Run basic hello world server
+        * [x] Create repo for the project on githubs
         * [ ] Setup database (postgres)
         * [ ] Dockerize app
         * [ ] Testing api (integration-test)
@@ -25,5 +26,3 @@
         * [ ] POST /api/users/signup
         * [ ] POST /api/users/login
         * [ ] GET /api/users/logout
-
-# Project 2:
