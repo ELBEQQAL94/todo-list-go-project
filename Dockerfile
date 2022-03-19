@@ -17,7 +17,7 @@ RUN go mod download
 # Build the project executable binary
 RUN go build -o main .
 
-EXPOSE 2222
+EXPOSE 4444
 
 # Run/Starts the app executable binary
 CMD ["/app/main"]

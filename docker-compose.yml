@@ -3,9 +3,9 @@ services:
   todo_list_backend:
     build: .
     expose:
-      - 2222
+      - 4444
     ports:
-      - 2222:2222
+      - 4444:4444
     environment:
-      - GO_PORT=2222
+      - GO_PORT=4444
   
