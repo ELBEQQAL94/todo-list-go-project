@@ -1,33 +1,23 @@
-# ======================
-#  GO FIRST STAGE
-# ======================
+# Start by selecting the base image for our service
+FROM golang:1.16-alpine
 
-FROM golang:latest as builder
-USER ${USER}
-WORKDIR /usr/src/app
-COPY go.mod \
-    go.sum ./
+# Creating the `app` directory in which the app will run 
+RUN mkdir /app
+
+# Move everything from root to the newly created app directory
+ADD . /app
+
+# Specifying app as our work directory in which
+# futher instructions should run into
+WORKDIR /app
+
+# Download all neededed project dependencies
 RUN go mod download
-COPY . ./
-ENV GO111MODULE="on" \
-    GOARCH="amd64" \
-    GOOS="linux" \
-    CGO_ENABLED="0"
-RUN apt-get clean \
-    && apt-get remove
 
-# ======================
-#  GO FINAL STAGE
-# ======================
+# Build the project executable binary
+RUN go build -o main .
 
-FROM builder
-WORKDIR /usr/src/app
-RUN apt-get update \
-    && apt-get install -y \
-    make \
-    vim \
-    build-essential
-COPY --from=builder . ./usr/src/app
-RUN make goprod
-EXPOSE 4000
-CMD ["./main"]
+EXPOSE 2222
+
+# Run/Starts the app executable binary
+CMD ["/app/main"]

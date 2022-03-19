@@ -1,6 +1,19 @@
 # Project: TODO LIST (REST API's)
+----------------------------------
+
 - https://github.com/restuwahyu13/gin-rest-api
+
+# Run Project
+---------------
+
+* Install node modules
+    - $ go get . || go mod || make goinstall
+
+* Run docker images:
+    - docker-compose up
+
 ## User Story:
+---------------
 
     * [] User can create account (username, password)
     * [] User can looged in into account by username and password.
