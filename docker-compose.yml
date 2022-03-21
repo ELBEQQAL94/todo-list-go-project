@@ -1,11 +1,14 @@
 version: '3.9'
 services:
-  todo_list_backend:
-    build: .
-    expose:
-      - 4444
+   api:
+    # we want to use the image which is build from our Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - 4444:4444
-    environment:
-      - GO_PORT=4444
+      - "4444:4444"
+    # We mount the working dir into the container, handy for development
+    # This is what makes the hot reloading work inside of a Docker container
+    volumes:
+      - .:/app/
   

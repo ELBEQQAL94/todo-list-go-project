@@ -1,23 +1,28 @@
-# Start by selecting the base image for our service
-FROM golang:1.16-alpine
+FROM golang:1.17-alpine
 
-# Creating the `app` directory in which the app will run 
-RUN mkdir /app
-
-# Move everything from root to the newly created app directory
-ADD . /app
-
-# Specifying app as our work directory in which
-# futher instructions should run into
 WORKDIR /app
 
-# Download all neededed project dependencies
-RUN go mod download
+# add some necessary packages
+RUN apk update && \
+    apk add libc-dev && \
+    apk add gcc && \
+    apk add make
 
-# Build the project executable binary
-RUN go build -o main .
+# prevent the re-installation of vendors at every change in the source code
+COPY ./go.mod go.sum ./
+RUN go mod download && go mod verify
+
+# Install Compile Daemon for go. We'll use it to watch changes in go files
+RUN go get github.com/githubnemo/CompileDaemon
+
+# Copy and build the app
+COPY . .
+COPY ./entrypoint.sh /entrypoint.sh
+
+# wait-for-it requires bash, which alpine doesn't ship with by default. Use wait-for instead
+ADD https://raw.githubusercontent.com/eficode/wait-for/v2.1.0/wait-for /usr/local/bin/wait-for
+RUN chmod +rx /usr/local/bin/wait-for /entrypoint.sh
 
 EXPOSE 4444
 
-# Run/Starts the app executable binary
-CMD ["/app/main"]
+ENTRYPOINT [ "sh", "/entrypoint.sh" ]
