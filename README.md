@@ -6,10 +6,7 @@
 # Run Project
 ---------------
 
-* Install node modules
-    - $ go get . || go mod || make goinstall
-
-* Run docker images:
+* Run docker container:
     - docker-compose up
 
 ## User Story:
