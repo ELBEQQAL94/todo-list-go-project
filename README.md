@@ -25,14 +25,25 @@
         * [x] Setup basic go project
         * [x] Run basic hello world server
         * [x] Create repo for the project on githubs
-        * [ ] Setup database (postgres)
-        * [ ] Dockerize app
-        * [ ] Testing api (integration-test)
+        * [x] Setup database (postgres)
+        * [x] Dockerize app
         * [ ] GET Create route for /api/tasks
+        * [ ] Testing GET Create route for /api/tasks
         * [ ] GET Create route for /api/tasks/:id
+        * [ ] Testing GET Create route for /api/tasks/:id
         * [ ] POST route /api/tasks
+        * [ ] Testing POST route /api/tasks
         * [ ] DELETE /api/tasks/:id
+        * [ ] Testing DELETE /api/tasks/:id
         * [ ] PUT /api/tasks/:id
+        * [ ] Testing PUT /api/tasks/:id
         * [ ] POST /api/users/signup
+        * [ ] Testing POST /api/users/signup
         * [ ] POST /api/users/login
+        * [ ] Testing POST /api/users/login
         * [ ] GET /api/users/logout
+        * [ ] Testing GET /api/users/logout
+        * [ ] Reset password
+        * [ ] Forgot password
+        * [ ] Verify email
+        * [ ] Create roles: user, admin
