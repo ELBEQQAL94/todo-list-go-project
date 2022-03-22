@@ -9,7 +9,7 @@ import (
 )
 
 func getHelloWorld(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, gin.H{"message": "Hello, World, test, main!"})
+	c.IndentedJSON(http.StatusOK, gin.H{"message": "Hello, World!"})
 }
 
 func main() {
