@@ -24,6 +24,10 @@ services:
       - 5430:5432
     volumes:
       - pg-data:/var/lib/postgresql/data
+   panel:
+    image: adminer:latest
+    ports:
+      - 8080:8080
 volumes:
   pg-data:
   
